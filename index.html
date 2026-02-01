@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #fbc2eb, #fda085);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      width: 420px;
+      position: relative;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .buttons {
+      position: relative;
+      height: 80px;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 12px 28px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      transition: all 0.2s ease;
+    }
+
+    .yes {
+      background-color: #e63946;
+      color: white;
+      left: 80px;
+    }
+
+    .no {
+      background-color: #e0e0e0;
+      color: #555;
+      right: 80px;
+    }
+
+    .caption {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card">
+    <h1>Stephany,<br>will you be my valentine? 💖</h1>
+
+    <div class="buttons">
+      <button class="yes" onclick="yesClicked()">Yes 💕</button>
+      <button class="no" id="noBtn">No</button>
+    </div>
+
+    <div class="caption">“No” seems a bit shy</div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const card = document.getElementById("card");
+
+    noBtn.addEventListener("mouseenter", () => {
+      const cardRect = card.getBoundingClientRect();
+
+      const maxX = cardRect.width - noBtn.offsetWidth - 20;
+      const maxY = cardRect.height - noBtn.offsetHeight - 20;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+    });
+
+    function yesClicked() {
+      card.innerHTML = "<h1>Yay!!! 🥰❤️<br>Happy Valentine’s Day!</h1>";
+    }
+  </script>
+
+</body>
+</html>
